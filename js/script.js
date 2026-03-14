@@ -1,52 +1,44 @@
-// Funções Auxiliares
-function inverterLista(lista) {
-    let inverte_lista = [];
+// Funções dos Botões
+function converterDecimal() {
+    let decimal = Number(ipt_decimal.value);
 
-    for (let i = lista.length-1; i >= 0; i--) {
-        inverte_lista.push(lista[i]);
-    }
-
-    return inverte_lista;
+    decimal1.innerHTML = converterDecimalParaBinario(decimal);
+    decimal2.innerHTML = converterDecimalParaOctal(decimal);
+    decimal3.innerHTML = converterDecimalParaHexaDecimal(decimal)
 }
 
-function separarBinarioEmConjuntoDeBits(binario, qtdBits) {
-    let listaBits = [];
-    let digitos = [];
-    
-    for(i = binario.length - 1; i >= 0; i--) {
-        listaBits.push(binario[i]);
+function converterBinario() {
+    let binario = ipt_binario.value;
 
-        while (i == 0 && listaBits.length != qtdBits) {
-            listaBits.push("0");
-        }
-        
-        if (listaBits.length == qtdBits) {
-            let tempBinario = "";
-
-            listaBits = inverterLista(listaBits);
-
-            listaBits.forEach(bit => {
-                tempBinario += bit;
-            })
-
-            digitos.push(converterBinarioParaDecimal(tempBinario));
-
-            listaBits = [];
-        }
-    }
-
-    return inverterLista(digitos);
+    binario1.innerHTML = converterBinarioParaDecimal(binario);
+    binario2.innerHTML = converterBinarioParaOctal(binario);
+    binario3.innerHTML = converterBinarioParaHexaDecimal(binario);
 }
 
+function converterOctal() {
+    let octal = ipt_octal.value;
+
+    octal1.innerHTML = converterOctalParaDecimal(octal);
+    octal2.innerHTML = converterOctalParaBinario(octal);
+    octal3.innerHTML = converterOctalParaHexaDecimal(octal);
+}
+
+function converterHexaDecimal() {
+    let hex = ipt_hex.value;
+
+    hex1.innerHTML = converterHexaDecimalParaDecimal(hex);
+    hex2.innerHTML = converterHexaDecimalParaBinario(hex);
+    hex3.innerHTML = converterHexaDecimalParaOctal(hex);
+}
 
 // Converter Binários
-function converterBinarioParaDecimal(binario) {    
+function converterBinarioParaDecimal(binario) {
     binario = inverterLista(binario);
 
     let decimal = 0;
     binario.forEach((bit, index) => {
         if (bit == '1') {
-            decimal += 2**index;
+            decimal += 2 ** index;
         }
     });
 
@@ -73,7 +65,7 @@ function converterBinarioParaHexaDecimal(binario) {
     let hex = ""
     digitosDecimal.forEach(digito => {
         if (digito >= 10) {
-            hex += letrasHex[digito-10];
+            hex += letrasHex[digito - 10];
         } else {
             hex += digito;
         }
@@ -111,7 +103,7 @@ function converterDecimalParaBinario(decimal) {
                 soma -= numero;
                 return;
             }
-            
+
             binario += "1";
         } else {
             binario += "0";
@@ -136,8 +128,8 @@ function converterOctalParaDecimal(octal) {
 
     octal = inverterLista(octal)
 
-    for(i = 0; i < octal.length; i++) {
-        decimal += octal[i]*8**i;
+    for (i = 0; i < octal.length; i++) {
+        decimal += octal[i] * 8 ** i;
     }
 
     return decimal;
@@ -157,21 +149,21 @@ function converterHexaDecimalParaDecimal(hex) {
         ['A', 'B', 'C', 'D', 'E', 'F'],
         ['10', '11', '12', '13', '14', '15']
     ];
-    
+
     let decimal = 0;
 
     hex = inverterLista(hex);
 
-    for(i = 0; i < hex.length; i++) {
-        if(valoresHex[0].includes(hex[i])) {
-            decimal += valoresHex[1][valoresHex[0].indexOf(hex[i])]*16**i;
+    for (i = 0; i < hex.length; i++) {
+        if (valoresHex[0].includes(hex[i])) {
+            decimal += valoresHex[1][valoresHex[0].indexOf(hex[i])] * 16 ** i;
         } else {
-            decimal += hex[i]*16**i;
+            decimal += hex[i] * 16 ** i;
         }
     }
 
     return decimal;
-} 
+}
 
 function converterHexaDecimalParaBinario(hex) {
     return converterDecimalParaBinario(converterHexaDecimalParaDecimal(hex));
@@ -181,22 +173,42 @@ function converterHexaDecimalParaOctal(hex) {
     return converterBinarioParaOctal(converterHexaDecimalParaBinario(hex));
 }
 
-//Decimais
-console.log(converterDecimalParaBinario(28000));
-console.log(converterDecimalParaOctal(28000));
-console.log(converterDecimalParaHexaDecimal(67));
+// Funções Auxiliares
+function inverterLista(lista) {
+    let inverte_lista = [];
 
-//Binários
-console.log(converterBinarioParaDecimal("110110101100000"));
-console.log(converterBinarioParaOctal("110110101100000"));
-console.log(converterBinarioParaHexaDecimal("110110101100000"));
+    for (let i = lista.length - 1; i >= 0; i--) {
+        inverte_lista.push(lista[i]);
+    }
 
-//Octais
-console.log(converterOctalParaDecimal("270"));
-console.log(converterOctalParaBinario("270"));
-console.log(converterOctalParaHexaDecimal("5250"));
+    return inverte_lista;
+}
 
-//HexaDecimais
-console.log(converterHexaDecimalParaDecimal("F"));
-console.log(converterHexaDecimalParaBinario("F"));
-console.log(converterHexaDecimalParaOctal("AA8"));
+function separarBinarioEmConjuntoDeBits(binario, qtdBits) {
+    let listaBits = [];
+    let digitos = [];
+
+    for (i = binario.length - 1; i >= 0; i--) {
+        listaBits.push(binario[i]);
+
+        while (i == 0 && listaBits.length != qtdBits) {
+            listaBits.push("0");
+        }
+
+        if (listaBits.length == qtdBits) {
+            let tempBinario = "";
+
+            listaBits = inverterLista(listaBits);
+
+            listaBits.forEach(bit => {
+                tempBinario += bit;
+            })
+
+            digitos.push(converterBinarioParaDecimal(tempBinario));
+
+            listaBits = [];
+        }
+    }
+
+    return inverterLista(digitos);
+}

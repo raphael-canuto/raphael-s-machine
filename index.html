@@ -1,36 +1,135 @@
 <!-- Criado por Marise Miranda | 2017.1 -->
 <!-- Adaptado por Matheus Matos | 2025.1 -->
+<!-- Adaptado por Raphael Canuto | 2026.3 -->
 
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raphael's Machine</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body bgcolor="#00ffff">
-    <center>
+<body>
+    <div class="container">
         <h1>Raphael's Machine</h1>
 
-        <h3>Digite um número Decimal:</h3>
-        <input id="demo1" type="text" placeholder="Ex: 42">
+        <div class="terminal">
+            <div>
+                <div class="linha">
+                    <label>> Digite um número Decimal:</label>
+                    <input id="ipt_decimal" type="text" placeholder="Ex: 42">
+                </div>
 
-        <br><br>
+                <button onclick="converterDecimal()">Converter</button>
 
-        <button onclick="converter()">Converter</button>
+                <div class="resultados">
+                    <h3>> Resultados:</h3>
 
-        <h3>Resultados:</h3>
-        <p>Octal:
-        <div id="demo2"></div>
-        </p>
-        <p>Hexadecimal:
-        <div id="demo3"></div>
-        </p>
-        <p>Binário:
-        <div id="demo4"></div>
-        </p>
-    </center>
+                    <div class="resultado">
+                        <strong>Binário:</strong>
+                        <div id="decimal1" class="saida">_</div>
+                    </div>
+
+                    <div class="resultado">
+                        <strong>Octal:</strong>
+                        <div id="decimal2" class="saida">_</div>
+                    </div>
+
+                    <div class="resultado">
+                        <strong>Hexadecimal:</strong>
+                        <div id="decimal3" class="saida">_</div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="linha">
+                    <label>> Digite um número Binário:</label>
+                    <input id="ipt_binario" type="text" placeholder="Ex: 1011">
+                </div>
+
+                <button onclick="converterBinario()">Converter</button>
+
+                <div class="resultados">
+                    <h3>> Resultados:</h3>
+
+                    <div class="resultado">
+                        <strong>Decimal:</strong>
+                        <div id="binario1" class="saida">_</div>
+                    </div>
+
+                    <div class="resultado">
+                        <strong>Octal:</strong>
+                        <div id="binario2" class="saida">_</div>
+                    </div>
+
+                    <div class="resultado">
+                        <strong>Hexadecimal:</strong>
+                        <div id="binario3" class="saida">_</div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="linha">
+                    <label>> Digite um número Octal:</label>
+                    <input id="ipt_octal" type="text" placeholder="Ex: 12">
+                </div>
+
+                <button onclick="converterOctal()">Converter</button>
+
+                <div class="resultados">
+                    <h3>> Resultados:</h3>
+
+                    <div class="resultado">
+                        <strong>Decimal:</strong>
+                        <div id="octal1" class="saida">_</div>
+                    </div>
+
+                    <div class="resultado">
+                        <strong>Binário:</strong>
+                        <div id="octal2" class="saida">_</div>
+                    </div>
+
+                    <div class="resultado">
+                        <strong>Hexadecimal:</strong>
+                        <div id="octal3" class="saida">_</div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="linha">
+                    <label>> Digite um número Hexadecimal:</label>
+                    <input id="ipt_hex" type="text" placeholder="Ex: A1">
+                </div>
+
+                <button onclick="converterHexaDecimal()">Converter</button>
+
+                <div class="resultados">
+                    <h3>> Resultados:</h3>
+
+                    <div class="resultado">
+                        <strong>Decimal:</strong>
+                        <div id="hex1" class="saida">_</div>
+                    </div>
+
+                    <div class="resultado">
+                        <strong>Binário:</strong>
+                        <div id="hex2" class="saida">_</div>
+                    </div>
+
+                    <div class="resultado">
+                        <strong>Octal:</strong>
+                        <div id="hex3" class="saida">_</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
 </body>
 </html>
