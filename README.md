@@ -4,6 +4,9 @@ Conversor de Decimal, Binário, Octal e Hexadecimal em HTML, CSS e JavaScript, d
 A calculadora é uma adaptação da **Sptecher's Machine** criado por Marise Miranda (2017-1), atualizado por Matheus Matos (2025-1) e posteriormente por **Raphael Canuto (2026-1)**
 
 ---
+## Preview
+
+![Preview](/img/machine-preview.png)
 
 ## Conversor de bases
 
